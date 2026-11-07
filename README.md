@@ -6,6 +6,8 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
 
 **AWS resources are currently torn down.** Glad to re-provision the full stack for interview / demo purposes (`docs/AWS.md`). Snapshot `v9.0.0` · signup cap **5 users**.
 
+  For the FreshEats project, I monitored CloudWatch dashboards and AWS budget usage. When spending approached the configured budget, I tore down all AWS resources using Terraform to ensure costs did not supersede the free tier. Usage remained within the free tier, and I haven’t received an AWS bill for the project yet.
+
   For FreshEats, I attempted to re-provision the AWS beta environment for limited testing with 5–10 users. 
   However, dependency mismatches between the application build and the AWS environment prevented a stable deployment. 
   A better approach may be to refactor the deployment and implement autoscaling when preparing the application for production.
