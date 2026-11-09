@@ -10,7 +10,7 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
 
   For FreshEats, I attempted to re-provision the AWS beta environment for limited testing with 5–10 users. 
   However, dependency mismatches between the application build and the AWS environment prevented a stable deployment. 
-  A better approach may be to refactor the deployment to prepare the application for deployment.
+  A better approach may be to refactor the application to prepare for deployment.
 
   For interview purposes we can reference the [GymTok](https://github.com/alex-rahi/GymTok) application. 
 
