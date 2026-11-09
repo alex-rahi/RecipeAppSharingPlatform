@@ -10,7 +10,7 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
 
   For FreshEats, I attempted to re-provision the AWS beta environment for limited testing with 5–10 users. 
   However, dependency mismatches between the build and AWS environment prevented a stable deployment. 
-  A better approach may be to refactor the application to prepare for a free-tier deployment. An end to end application live in production is [https://github.com/alex-rahi/slkr_academy(https://github.com/alex-rahi/slkr_academy).
+  A better approach may be to refactor the application to prepare for a free-tier deployment. An end to end application live in production is [https://github.com/alex-rahi/slkr_academy](https://github.com/alex-rahi/slkr_academy).
 
 
 Previous demo host (when live): [d1reqap9sj9n0b.cloudfront.net](https://d1reqap9sj9n0b.cloudfront.net)
