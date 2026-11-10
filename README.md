@@ -12,6 +12,8 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
   However, dependency mismatches between the build and AWS environment prevented a stable deployment. 
   A better approach may be to refactor the application for a free-tier deployment. An end to end application live in production is [slkr-academy](https://github.com/alex-rahi/slkr_academy).
 
+  Future Scaling:
+  Terraform would provision the AWS infrastructure, including the VPC, Amazon EKS cluster, EC2 worker nodes, RDS PostgreSQL, ElastiCache Redis, S3, and SQS. Kubernetes manifest files stored in the GitHub    repository would define the FastAPI backend Deployment, Service, Ingress, and Horizontal Pod Autoscaler (HPA). When users access FreshEats, incoming requests would be routed through Route 53,              CloudFront, and an Application Load Balancer (ALB) to the FastAPI pods running in EKS. As application traffic increases and CPU utilization exceeds the configured target of 70%, HPA would automatically    increase the number of backend pods to handle the workload. If additional compute capacity is needed, Karpenter or Cluster Autoscaler would provision more EC2 worker nodes. Meanwhile, RDS would handle     database operations, Redis would provide caching, S3 would store recipe images, and SQS would manage asynchronous background tasks such as image moderation. As traffic decreases, HPA would reduce the      number of pods to optimize resource utilization and infrastructure costs.
 
 Previous demo host (when live): [d1reqap9sj9n0b.cloudfront.net](https://d1reqap9sj9n0b.cloudfront.net)
 
