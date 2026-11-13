@@ -13,7 +13,12 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
   A better approach may be to refactor the application for a free-tier deployment. An end to end application live in production is [slkr-academy](https://github.com/alex-rahi/slkr_academy).
 
   Future Scaling:
-  AWS Lambda can automate cost-based infrastructure scaling by integrating with AWS Budgets, Amazon SNS, EventBridge, CloudWatch, and Amazon EKS. When AWS spending reaches a predefined budget threshold,     AWS Budgets sends a notification through SNS, triggering a Python-based Lambda function that evaluates current spending, resource utilization, and predefined cost-control policies. Lambda can then use     AWS APIs to adjust EKS managed node group capacity, modify approved Kubernetes workload replica limits, or stop nonessential development resources to reduce costs. Meanwhile, Kubernetes Horizontal Pod     Autoscaler (HPA) continues scaling application pods based on CPU or memory utilization, while Karpenter or EC2 Auto Scaling adjusts worker-node capacity to accommodate demand. This approach combines       performance-based autoscaling with budget-aware cost controls, helping maintain application availability while minimizing unnecessary AWS spending. Because billing data can be delayed, Lambda should       enforce minimum capacity limits and avoid automatically shutting down critical production resources.
+  AWS Lambda can automate cost-based infrastructure scaling by integrating with AWS Budgets, Amazon SNS, EventBridge, CloudWatch, and Amazon EKS. When AWS spending reaches a predefined budget threshold,     AWS Budgets sends a notification through SNS, triggering a Python-based Lambda function that evaluates current spending, resource utilization, and predefined cost-control policies. 
+  
+  Lambda can then use AWS APIs to adjust EKS managed node group capacity, modify approved Kubernetes workload replica limits, or stop nonessential development resources to reduce costs. Meanwhile,           Kubernetes Horizontal Pod Autoscaler (HPA) continues scaling application pods based on CPU or memory utilization, while Karpenter or EC2 Auto Scaling adjusts worker-node capacity to accommodate demand.    
+  This approach combines performance-based autoscaling with budget-aware cost controls, helping maintain application availability while minimizing unnecessary AWS spending. Because billing data can be       delayed, Lambda should enforce minimum capacity limits and avoid automatically shutting down critical production resources.
+
+
 
 Previous demo host (when live): [d1reqap9sj9n0b.cloudfront.net](https://d1reqap9sj9n0b.cloudfront.net)
 
