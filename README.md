@@ -1,23 +1,19 @@
 ![FreshEats demo — responsive recipe image grid](screenshots/fresheats-grid.png)
 
-# FreshEats — AWS beta
+# FreshEats — AWS beta (5–10 users)
 
 Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual CloudFront.
 
 **AWS resources are currently torn down.** Glad to re-provision the full stack for interview / demo purposes (`docs/AWS.md`). Snapshot `v9.0.0` · signup cap **5 users**.
 
-  For the FreshEats project, I monitored CloudWatch dashboards and AWS budget usage. When spending approached the configured budget, I tore down all AWS resources using Terraform to ensure costs did not supersede the free tier. Usage remained within the free tier, and I haven’t received an AWS bill for the project yet.
+  Beta Testing: For the FreshEats project, I monitored CloudWatch dashboards and AWS budget usage. When spending approached the configured budget, I tore down all AWS resources using Terraform to ensure costs did not supersede the free tier. Usage remained within the free tier, and I haven’t received an AWS bill for the project yet.
 
-  For FreshEats, I attempted to re-provision the AWS beta environment for limited testing with 5–10 users. 
+  Re-provision: Attempted to re-provision the AWS beta environment for limited testing with 5–10 users. 
   However, dependency mismatches between the build and AWS environment prevented a stable deployment. 
   A better approach may be to refactor the application for a free-tier deployment. An end to end application live in production is [slkr-academy](https://github.com/alex-rahi/slkr_academy).
 
-  Future Scaling:
-  AWS Lambda can automate cost-based infrastructure scaling by integrating with AWS Budgets, Amazon SNS, EventBridge, CloudWatch, and Amazon EKS. When AWS spending reaches a predefined budget threshold,     AWS Budgets sends a notification through SNS, triggering a Python-based Lambda function that evaluates current spending, resource utilization, and predefined cost-control policies. 
-  
-  Lambda can then use AWS APIs to adjust EKS managed node group capacity, modify approved Kubernetes workload replica limits, or stop nonessential development resources to reduce costs. Meanwhile,           Kubernetes Horizontal Pod Autoscaler (HPA) continues scaling application pods based on CPU or memory utilization, while Karpenter or EC2 Auto Scaling adjusts worker-node capacity to accommodate demand.    
-  
-  This approach combines performance-based autoscaling with budget-aware cost controls, helping maintain application availability while minimizing unnecessary AWS spending. Because billing data can be       delayed, Lambda should enforce minimum capacity limits and avoid automatically shutting down critical production resources.
+  Future Scaling: AWS Lambda can automate cost-based infrastructure scaling by integrating with AWS Budgets, Amazon SNS, EventBridge, CloudWatch, and Amazon EKS. When AWS spending reaches a predefined       budget threshold, AWS Budgets sends a notification through SNS, triggering a Python-based Lambda function that evaluates current spending, resource utilization, and predefined cost-control policies. 
+  Lambda can then use AWS APIs to adjust EKS managed node group capacity, modify approved Kubernetes workload replica limits, or stop nonessential development resources to reduce costs. Meanwhile,           Kubernetes Horizontal Pod Autoscaler (HPA) continues scaling application pods based on CPU or memory utilization, while Karpenter or EC2 Auto Scaling adjusts worker-node capacity to accommodate demand.    This approach combines performance-based autoscaling with budget-aware cost controls, helping maintain application availability while minimizing unnecessary AWS spending. Because billing data can be       delayed, Lambda should enforce minimum capacity limits and avoid automatically shutting down critical production resources.
 
   Architecture
   AWS Budgets → Amazon SNS → AWS Lambda → Amazon EKS
