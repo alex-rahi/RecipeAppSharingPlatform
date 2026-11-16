@@ -19,6 +19,18 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
   
   This approach combines performance-based autoscaling with budget-aware cost controls, helping maintain application availability while minimizing unnecessary AWS spending. Because billing data can be       delayed, Lambda should enforce minimum capacity limits and avoid automatically shutting down critical production resources.
 
+  Architecture
+  AWS Budgets → Amazon SNS → AWS Lambda → Amazon EKS
+
+  Example policy:
+  Budget usage	Lambda action
+  Below 50%	No action
+  50–69%	Log budget warning
+  70–79%	Send warning; maintain capacity
+  80–89%	Reduce nonproduction EKS capacity to 2 nodes
+  90–99%	Reduce nonproduction EKS capacity to 1 node
+  100%+	Maintain minimum capacity and alert administrator
+
 
 
 Previous demo host (when live): [d1reqap9sj9n0b.cloudfront.net](https://d1reqap9sj9n0b.cloudfront.net)
