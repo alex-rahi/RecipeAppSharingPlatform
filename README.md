@@ -11,6 +11,8 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
   Re-provision: Attempted to re-provision the AWS beta environment for limited testing with 5–10 users. 
   However, dependency mismatches between the build and AWS environment prevented a stable deployment. 
   A better approach may be to refactor the application for a free-tier deployment. An end to end application live in production is [slkr-academy](https://github.com/alex-rahi/slkr_academy).
+  
+  Leveraged YOLO for object detection, powered by PyTorch, a Python-based deep learning framework. I implemented conditions to identify food-related images and flag non-food objects for manual      review before publication. The filtering process achieved a 100% success rate during my manual batch testing, which included a diverse range of food and non-food images. I would implement a       similar approach for audio filtering using Python's Whisper package to convert speech into text and from there implement flags to meet certain conditions. 
 
   Future Scaling: AWS Lambda can automate cost-based infrastructure scaling by integrating with AWS Budgets, Amazon SNS, EventBridge, CloudWatch, and Amazon EKS. When AWS spending reaches a predefined       budget threshold, AWS Budgets sends a notification through SNS, triggering a Python-based Lambda function that evaluates current spending, resource utilization, and predefined cost-control policies. 
   
