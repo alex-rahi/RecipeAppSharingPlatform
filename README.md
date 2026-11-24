@@ -20,28 +20,6 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
 
   Scaling would involve a hybrid approach of HPA and AWS Lambda. 
 
-  Architecture
-  AWS Budgets → Amazon SNS → AWS Lambda → Amazon EKS
-
-  Example policy:
-
-  
-  Budget usage	Lambda action
-  
-  Below 50%:  No action
-  
-  50–69%:	Log budget warning
-  
-  70–79%:	Send warning; maintain capacity
-  
-  80–89%:	Reduce nonproduction EKS capacity to 2 nodes
-  
-  90–99%:	Reduce nonproduction EKS capacity to 1 node
-  
-  100%+: Maintain minimum capacity and alert administrator
-
-
-
 Previous demo host (when live): [d1reqap9sj9n0b.cloudfront.net](https://d1reqap9sj9n0b.cloudfront.net)
 
 ### No local Docker required for the cloud path
