@@ -26,17 +26,17 @@ Architecture as deployed: EKS API + YOLO worker, Cognito, S3/SQS/RDS/Redis, dual
   
   Budget usage	Lambda action
   
-  Below 50%	No action
+  Below 50%:  No action
   
-  50–69%	Log budget warning
+  50–69%:	Log budget warning
   
-  70–79%	Send warning; maintain capacity
+  70–79%:	Send warning; maintain capacity
   
-  80–89%	Reduce nonproduction EKS capacity to 2 nodes
+  80–89%:	Reduce nonproduction EKS capacity to 2 nodes
   
-  90–99%	Reduce nonproduction EKS capacity to 1 node
+  90–99%:	Reduce nonproduction EKS capacity to 1 node
   
-  100%+	Maintain minimum capacity and alert administrator
+  100%+: Maintain minimum capacity and alert administrator
 
 
 
